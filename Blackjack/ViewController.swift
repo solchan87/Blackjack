@@ -9,10 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var shuffleCard: ShuffleCard = ShuffleCard()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var cardList: [String] = shuffleCard.makeCardList(deck: 4)
+        cardList = shuffleCard.shuffleCardList(is: cardList)
+        print(cardList)
     }
 
     override func didReceiveMemoryWarning() {
