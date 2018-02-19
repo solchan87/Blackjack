@@ -13,9 +13,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var cardList: [String] = shuffleCard.makeCardList(deck: 4)
-        cardList = shuffleCard.shuffleCardList(is: cardList)
-        print(cardList)
+        shuffleCard.shuffleCardList()
+        print(shuffleCard.getCard())
+        print(shuffleCard.getCard())
     }
 
     override func didReceiveMemoryWarning() {

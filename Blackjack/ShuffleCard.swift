@@ -9,6 +9,9 @@
 import Foundation
 
 class ShuffleCard {
+    
+    private var deck: Int = 6
+    
     private let cardNumList: [String] = [
         "ace",
         "2",
@@ -32,8 +35,14 @@ class ShuffleCard {
         "spades"
     ]
     
-    func makeCardList(deck: Int) -> [String]{
-        var cardList: [String] = []
+    private var cardList: [String] = []
+    
+    func setDeck(is num: Int){
+        deck = num
+    }
+    
+    func makeCardList(){
+        cardList = []
         for _ in 1...deck{
             for type in cardTypeList{
                 for num in cardNumList{
@@ -43,20 +52,25 @@ class ShuffleCard {
                 }
             }
         }
-        return cardList
     }
     
-    func shuffleCardList(is cardList: [String]) -> [String]{
+    func shuffleCardList(){
+        makeCardList()
         var tempList = cardList
         var resultList: [String] = []
         
         while tempList.count != 0{
             let index: Int = Int(arc4random_uniform(UInt32(tempList.count)))
             resultList.append(tempList[index])
-            print(index)
             tempList.remove(at: index)
         }
-        return resultList
+        cardList = resultList
+    }
+    
+    func getCard() -> String{
+        let card: String = cardList[0]
+        cardList.remove(at: 0)
+        return card
     }
     
 }
