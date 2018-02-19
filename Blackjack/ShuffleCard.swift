@@ -10,7 +10,12 @@ import Foundation
 
 class ShuffleCard {
     
+    // 블랙젝에 사용되는 덱 수
     private var deck: Int = 6
+    // 커팅 설정 - 차후에 게이지로 설정 할 수 있게 변경
+    private var cutPoint: Int = 80
+    
+    var cutFlag: Bool = true
     
     private let cardNumList: [String] = [
         "ace",
@@ -39,6 +44,10 @@ class ShuffleCard {
     
     func setDeck(is num: Int){
         deck = num
+    }
+    
+    func setCutPoint(is num: Int){
+        cutPoint = num
     }
     
     func makeCardList(){
@@ -70,7 +79,10 @@ class ShuffleCard {
     func getCard() -> String{
         let card: String = cardList[0]
         cardList.remove(at: 0)
+        
+        if cardList.count == cutPoint{
+            cutFlag = false
+        }
         return card
     }
-    
 }
