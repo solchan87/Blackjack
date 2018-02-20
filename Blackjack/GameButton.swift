@@ -28,7 +28,8 @@ class GameButton: UIButton {
     
     func createBtn(){
         self.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
-        self.setTitleColor(UIColor.darkGray, for: .normal)
+        self.setTitleColor(.black, for: .normal)
+        self.setTitleColor(.white, for: .highlighted)
         self.addTarget(self, action: #selector(touchBtn(_:)), for: .touchUpInside)
     }
     

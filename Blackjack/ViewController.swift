@@ -21,7 +21,8 @@ class ViewController: UIViewController, GameButtonDelegate{
         }
     }
     
-    let gameBtnList: [String] = ["Hit", "Double", "Stand"]
+    let gameBtnTitleList: [String] = ["Hit", "Double", "Stand"]
+    var gameBtnList: [GameButton] = []
     
     var playerCardScoreLb: UILabel = UILabel(frame: CGRect(x: 30, y: 525, width: 60, height: 20))
 
@@ -41,7 +42,7 @@ class ViewController: UIViewController, GameButtonDelegate{
         var gameBtnTag: Int = 0
         let xMargin: CGFloat = 20
         var xPoint: CGFloat = 80
-        for btnText in gameBtnList{
+        for btnText in gameBtnTitleList{
             let gameBtn: GameButton = GameButton()
             gameBtn.frame = CGRect(x: xPoint, y: self.view.frame.size.height - 80, width: 80, height: 40)
             xPoint += (gameBtn.frame.width + xMargin)
@@ -50,6 +51,7 @@ class ViewController: UIViewController, GameButtonDelegate{
             gameBtn.delegate = self
             gameBtn.btnText = btnText
             self.view.addSubview(gameBtn)
+            gameBtnList.append(gameBtn)
             
             gameBtnTag += 1
         }
@@ -63,7 +65,6 @@ class ViewController: UIViewController, GameButtonDelegate{
         drawPlayer(isFront: true)
         drawDealer(isFront: false)
         drawPlayer(isFront: true)
-        calc(for: playerCardList)
     }
     
     func drawDealer(isFront flag: Bool){
@@ -91,17 +92,36 @@ class ViewController: UIViewController, GameButtonDelegate{
         playerCardList.append(playerCard)
         self.view.addSubview(playerCard)
         
-        ///
-        print(playerCard.cardFrontImg)
+        calcScore(for: playerCardList)
     }
     
-    func calc(for cardList: [CardImageView]){
+    func calcScore(for cardList: [CardImageView]){
         var calcNum: Int = 0
+        var aceCount: Int = 0
         for card in cardList{
             let cardNum = getCardNum(is: card)
+            if cardNum == 11{
+                aceCount += 1
+            }
             calcNum += cardNum
         }
+        for _ in 0 ..< aceCount{
+            if calcNum > 21{
+                calcNum -= 10
+            }
+        }
         playerCardScore = calcNum
+    }
+    
+    func delayBtn(){
+        for btn in gameBtnList{
+            btn.isEnabled = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            for btn in self.gameBtnList{
+                btn.isEnabled = true
+            }
+        }
     }
     
     
@@ -136,18 +156,27 @@ class ViewController: UIViewController, GameButtonDelegate{
         default:
             cardNum = 0
         }
-        ///
-        print(cardNum)
         return cardNum
     }
     
     func clickBtn(_ gameButton: GameButton) {
+        delayBtn()
         switch gameButton.tag {
+        /// Hit 버튼 함수
         case 0:
             drawPlayer(isFront: true)
-            calc(for: playerCardList)
+            if playerCardScore > 21{
+                let alertVC: UIAlertController = UIAlertController(title: "Bust", message: "카드의 합이 21이 넘었습니다.", preferredStyle: .alert)
+                let alertAct = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+                alertVC.addAction(alertAct)
+                self.present(alertVC, animated: true, completion: nil)
+            }
+        /// Double 버튼 함수
         case 1:
-            print("1")
+            drawPlayer(isFront: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                
+            }
         case 2:
             print("2")
         case 3:
