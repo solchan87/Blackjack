@@ -130,10 +130,10 @@ class ViewController: UIViewController, GameButtonDelegate{
     /// - Parameter card: 점수를 반환하려는 카드
     /// - Returns: 카드의 점수
     func getCardNum(is card: CardImageView) -> Int{
-        let cardName: String = card.cardFrontImg.components(separatedBy: "_of_").first!
+        let cardName: String = card.cardFrontImg.components(separatedBy: "_").first!
         var cardNum: Int = 0
         switch cardName {
-        case "ace":
+        case "A":
             cardNum = 11
         case "2":
             cardNum = 2
@@ -151,7 +151,7 @@ class ViewController: UIViewController, GameButtonDelegate{
             cardNum = 8
         case "9":
             cardNum = 9
-        case "10","king","jack","queen":
+        case "10","J","Q","K":
             cardNum = 10
         default:
             cardNum = 0
@@ -184,6 +184,10 @@ class ViewController: UIViewController, GameButtonDelegate{
         default:
             print("오류")
         }
+    }
+    
+    func initGameSetting(){
+        
     }
 
     override func didReceiveMemoryWarning() {

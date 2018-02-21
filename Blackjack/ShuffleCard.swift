@@ -18,7 +18,7 @@ class ShuffleCard {
     var cutFlag: Bool = true
     
     private let cardNumList: [String] = [
-        "ace",
+        "A",
         "2",
         "3",
         "4",
@@ -28,16 +28,16 @@ class ShuffleCard {
         "8",
         "9",
         "10",
-        "jack",
-        "queen",
-        "king"
+        "J",
+        "Q",
+        "K"
     ]
     
     private let cardTypeList: [String] = [
-        "clubs",
-        "diamonds",
-        "hearts",
-        "spades"
+        "C",
+        "D",
+        "H",
+        "S"
     ]
     
     private var cardList: [String] = []
@@ -56,7 +56,7 @@ class ShuffleCard {
             for type in cardTypeList{
                 for num in cardNumList{
                     var card: String = num
-                    card += "_of_" + type
+                    card += "_" + type
                     cardList.append(card)
                 }
             }

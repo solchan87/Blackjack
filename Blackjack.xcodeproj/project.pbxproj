@@ -68,6 +68,7 @@
 		29A5773C203956A9003856EB /* ShuffleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A5773B203956A9003856EB /* ShuffleCard.swift */; };
 		29A57742203B11B6003856EB /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A57741203B11B6003856EB /* CardImageView.swift */; };
 		29A57744203B5A95003856EB /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A57743203B5A95003856EB /* GameButton.swift */; };
+		29A57766203BEB01003856EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A57765203BEB01003856EB /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		29A5773B203956A9003856EB /* ShuffleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShuffleCard.swift; sourceTree = "<group>"; };
 		29A57741203B11B6003856EB /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		29A57743203B5A95003856EB /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
+		29A57765203BEB01003856EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,12 +172,13 @@
 				29A576BD20332B11003856EB /* AppDelegate.swift */,
 				29A576BF20332B11003856EB /* ViewController.swift */,
 				29A5773B203956A9003856EB /* ShuffleCard.swift */,
+				29A57741203B11B6003856EB /* CardImageView.swift */,
+				29A57743203B5A95003856EB /* GameButton.swift */,
 				29A576C120332B11003856EB /* Main.storyboard */,
 				29A576C420332B11003856EB /* Assets.xcassets */,
 				29A576C620332B11003856EB /* LaunchScreen.storyboard */,
 				29A576C920332B11003856EB /* Info.plist */,
-				29A57741203B11B6003856EB /* CardImageView.swift */,
-				29A57743203B5A95003856EB /* GameButton.swift */,
+				29A57765203BEB01003856EB /* LoginViewController.swift */,
 			);
 			path = Blackjack;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A57766203BEB01003856EB /* LoginViewController.swift in Sources */,
 				29A5773C203956A9003856EB /* ShuffleCard.swift in Sources */,
 				29A576C020332B11003856EB /* ViewController.swift in Sources */,
 				29A57742203B11B6003856EB /* CardImageView.swift in Sources */,
